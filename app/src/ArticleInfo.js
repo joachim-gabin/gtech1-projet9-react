@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import MenuBar from "./MenuBar";
+import Footer from "./Footer";
 
 class ArticleInfo extends React.Component {
 
@@ -11,8 +12,12 @@ class ArticleInfo extends React.Component {
             <div>
                 <MenuBar />
 
-                <p>Article :</p>
-                <p>{truc}</p>
+				<div style={{"minHeight": "100vh"}}>
+					<p>Article :</p>
+					<p>{truc}</p>
+				</div>
+
+				<Footer />
             </div>
         );
     }

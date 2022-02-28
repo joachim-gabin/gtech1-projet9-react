@@ -1,19 +1,26 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-class MenuBar extends React.Component {
+import cart from "./cart.png";
+import logo from "./logo.jpg";
 
-    render() {
-        return (
-            <div class="menu-bar">
-                <Link to="/" class="title">Menu Bar Title Placeholder</Link>
-                
-                <div class="buttons">
-                    <Link to="/cart">My Shopping Cart</Link>
-                </div>
-            </div>
-        );
-    }
+const MenuBar = () => {
+	return (
+		<div className="menu-bar">
+			<div className="title-box">
+				<img src={logo} />
+				<div className="menu-elem-wrapper">
+					<Link to="/" className="title">Menu Bar Title Placeholder</Link>
+				</div>
+			</div>
+			
+			<div className="menu-elem-wrapper buttons">
+				<Link to="/cart">
+					My Shopping Cart
+				</Link>
+			</div>
+		</div>
+	);
 }
 
 export default MenuBar;

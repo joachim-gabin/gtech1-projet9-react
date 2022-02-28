@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import MenuBar from "./MenuBar";
+import Footer from "./Footer";
 
 class ShoppingCart extends React.Component {
 
@@ -8,6 +9,10 @@ class ShoppingCart extends React.Component {
         return (
             <div>
                 <MenuBar />
+				<div style={{"minHeight": "100vh"}}>
+
+				</div>
+				<Footer />
             </div>
         );
     }
