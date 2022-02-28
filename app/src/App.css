@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #2e2e2e;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +35,34 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+
+
+.menu-bar
+{
+  position: sticky;
+  top: 0;
+
+  background: #5e5e5e;
+  color: white;
+
+  padding: 20px;
+}
+
+.menu-bar .title
+{
+  font-weight: bold;
+}
+
+.menu-bar .buttons
+{
+  float: right;
+}
+
+a
+{
+  color: white;
+  text-decoration: none;
 }
