@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ordered_articles",
+  "info": {
+    "singularName": "ordered-article",
+    "pluralName": "ordered-articles",
+    "displayName": "Ordered Article",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "quantity": {
+      "type": "integer",
+      "required": true,
+      "default": 1,
+      "min": 1
+    },
+    "article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::article.article"
+    },
+    "order": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::order.order"
+    }
+  }
+}

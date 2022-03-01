@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ordered_articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ordered-article.ordered-article"
+    }
+  }
+}
