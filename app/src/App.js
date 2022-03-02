@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import {
@@ -8,7 +9,7 @@ import {
 
 import Accueil from './Accueil';
 import ShoppingCart from './ShoppingCart';
-import ArticleInfo from './ArticleInfo';
+import ArticlePage from './ArticlePage';
 
 const App = () => {
   return (
@@ -16,7 +17,7 @@ const App = () => {
       <Routes>
         <Route exact path='/' element={<Accueil />} />
         <Route exact path='/cart' element={<ShoppingCart />} />
-        <Route exact path="/article" element={<ArticleInfo />} />
+        <Route exact path="/articles" element={<ArticlePage />} />
       </Routes>
     </Router>
   );
