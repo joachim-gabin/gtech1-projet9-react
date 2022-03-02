@@ -10,17 +10,34 @@ import {
 import Accueil from './Accueil';
 import ShoppingCart from './ShoppingCart';
 import ArticlePage from './ArticlePage';
+import React from 'react';
 
-const App = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route exact path='/' element={<Accueil />} />
-        <Route exact path='/cart' element={<ShoppingCart />} />
-        <Route exact path="/articles" element={<ArticlePage />} />
-      </Routes>
-    </Router>
-  );
+class App extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			cart: []
+		};
+	}
+
+	addArticleToCart(article) {
+		this.setState((prevState) => ({
+			cart: [...prevState.cart, article]
+		}), () => { console.log(this.state.cart); });
+	}
+
+	render() {
+		return (
+			<Router>
+				<Routes>
+					<Route exact path='/' element={<Accueil />} />
+					<Route exact path='/cart' element={<ShoppingCart />} />
+					<Route exact path="/articles" element={<ArticlePage cart={this.state.cart} addArticleToCart={(a) => this.addArticleToCart(a)} />} />
+				</Routes>
+			</Router>
+		);
+	}
 }
 
 export default App;

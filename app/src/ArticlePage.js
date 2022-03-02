@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Container } from 'react-bootstrap'
+import { Col, Container, Row } from 'react-bootstrap'
 
 import MenuBar from "./components/MenuBar";
 import Footer from "./components/Footer";
@@ -33,11 +33,17 @@ class ArticlePage extends React.Component {
 					{JSON.stringify(this.state.articles, undefined, 4)}
 				</p>
 				<Container>
-					{
-						this.state.articles.data && this.state.articles.data.map((u, i) => {
-							return <Article key={u.id} name={u.attributes.name} price={u.attributes.price} />
-						})
-					}
+					<Row className="align-items-center">
+						{
+							this.state.articles.data && this.state.articles.data.map((u, id) => {
+								return (
+									<Col key={id} className="d-flex justify-content-center" xs={3}>
+										<Article article={u.attributes} addArticleToCart={this.props.addArticleToCart} />
+									</Col>
+								);
+							})
+						}
+					</Row>
 				</Container>
 
 				<Footer />
