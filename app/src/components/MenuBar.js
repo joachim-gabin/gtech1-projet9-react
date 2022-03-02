@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import cart from "./cart.png";
-import logo from "./logo.jpg";
+import cart from "../cart.png";
+import logo from "../logo.jpg";
 
 const MenuBar = () => {
 	return (

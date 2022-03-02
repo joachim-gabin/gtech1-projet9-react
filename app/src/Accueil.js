@@ -1,15 +1,44 @@
 import React, { Component } from 'react';
-import MenuBar from './MenuBar';
-import Footer from './Footer';
+
+import MenuBar from './components/MenuBar';
+import Footer from './components/Footer';
+import ArticleBox from './components/ArticleBox';
 
 import logo from './logo.jpg';
 
+const getUsers = async () => {
+	const reponse = await fetch("http://localhost:1337/api/articles", {method: "GET", headers: {"Accept": "application/json", "Content-Type": "application/json"}});
+	const users = await reponse.json();
+	return users["data"];
+}
+
 class Accueil extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			articles: []
+		}
+	}
+
+	async componentDidMount() {
+		const articles = await getUsers();
+		this.setState({articles: articles});
+	}
 
     render() {
         return (
             <div>
                 <MenuBar />
+
+				<p>
+					{JSON.stringify(this.state.articles, undefined, 4)}
+				</p>
+				{
+					this.state.articles.map((u, i) => {
+						return <ArticleBox key={u.id} name={u.attributes.name} price={u.attributes.price} />
+					})
+				}
 
 				<div className="App-header">
 					<img src={logo} width="300" style={{"borderRadius": "300px"}} />

@@ -71,3 +71,18 @@ footer
 	padding: 20px;
 	background: #5e5e5e;
 }
+
+.ArticleBox {
+	display: inline-block;
+	margin: 20px;
+	padding: 10px;
+	text-align: center;
+	background: rgb(83, 83, 122);
+}
+
+p
+{
+	white-space: pre-wrap;
+	font-family: monospace;
+	font-size: 20px;
+}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import MenuBar from "./MenuBar";
-import Footer from "./Footer";
+import MenuBar from "./components/MenuBar";
+import Footer from "./components/Footer";
 
 class ShoppingCart extends React.Component {
 
