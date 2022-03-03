@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 
-import { Col, Container, Row, Spinner } from 'react-bootstrap'
+import { Button, Col, Container, Form, Nav, Row, Spinner } from 'react-bootstrap'
 
 import MenuBar from "./components/MenuBar";
 import Footer from "./components/Footer";
 
 import Article from './components/Article';
+import Category from "./components/Category";
 
 
 
@@ -15,6 +16,8 @@ class ArticlePage extends React.Component {
 		super(props);
 		this.state = {
 			articles: [],
+			categories: [],
+			searchFilter: "",
 			loading: true
 		}
 	}
@@ -24,12 +27,27 @@ class ArticlePage extends React.Component {
 		// Simulation of a delay to test loading screen.
 		setTimeout(async () => {
 
-			const response = await fetch("http://localhost:1337/api/articles", {method: "GET", headers: {"Accept": "application/json", "Content-Type": "application/json"}});
+			let response = await fetch("http://localhost:1337/api/articles", {method: "GET", headers: {"Accept": "application/json", "Content-Type": "application/json"}});
 			const articles = await response.json();
 
-			this.setState({articles: articles, loading: false});
+			response = await fetch("http://localhost:1337/api/categories", {method: "GET", headers: {"Accept": "application/json", "Content-Type": "application/json"}});
+			const categories = await response.json();
 
-		}, 3000);
+			this.setState({articles: articles, categories: categories, loading: false});
+
+		}, 500);
+	}
+
+	filterResults() {
+
+		let result = [];
+		this.state.articles.data.map((u, id) => {
+			if (u.attributes.name.startsWith(this.state.searchFilter)) {
+				result.push(u.attributes);
+			}
+		});
+
+		return result;
 	}
 
     render() {
@@ -50,6 +68,8 @@ class ArticlePage extends React.Component {
 			);
 		}
 
+		let results = this.filterResults();
+
         return (
             <>
                 <MenuBar articles={this.props.cart} />
@@ -57,19 +77,47 @@ class ArticlePage extends React.Component {
 				<p>
 					{JSON.stringify(this.state.articles, undefined, 4)}
 				</p>
-				<Container>
-					<Row className="align-items-center">
+
+				<div className="py-3" style={{background: "gray"}}>
+					<Container>
+						<Form.Control type="text" placeholder="Chercher des articles..." style={{"display": "block"}} onChange={(event) => { this.setState({searchFilter: event.target.value}); }} />
+						<p className="pt-3 mb-0">{
+							(results.length == 0 ? "No" : results.length) + (results.length == 1 ? " résultat." : " résultats.")
+						}</p>
+					</Container>
+				</div>
+
+				<Row>
+					<Col xs={3} className="py-3" style={{background: "rgba(127, 127, 127, 0.3)"}}>
+						<Container>
 						{
-							this.state.articles.data.map((u, id) => {
+							this.state.categories.data.map((u, id) => {
 								return (
-									<Col key={id} className="d-flex justify-content-center" xs={3}>
-										<Article article={u.attributes} addArticleToCart={this.props.addArticleToCart} />
-									</Col>
+									<div className="d-grid gap-2 mb-3">
+										<Button className="btn-block">{u.attributes.name}</Button>
+									</div>
 								);
 							})
 						}
-					</Row>
-				</Container>
+						</Container>
+					</Col>
+
+					<Col xs={9} className="py-3">
+						<Container>
+							<Row className="align-items-center">
+								{
+									results.map((u, id) => {
+										return (
+											<Col key={id} className="d-flex justify-content-center" xs={3}>
+												<Article article={u} addArticleToCart={this.props.addArticleToCart} />
+											</Col>
+										);
+									})
+								}
+							</Row>
+						</Container>
+					</Col>
+				</Row>
 
 				<Footer />
             </>
