@@ -10,7 +10,7 @@ const Article = (props) => {
 				<Card.Text>
 					{props.article.price}€
 				</Card.Text>
-				<Button onClick={() => props.addArticleToCart(props.article)} variant="primary">Add to cart</Button>
+				<Button onClick={() => props.addArticleToCart(props.article)} variant="primary">Ajouter au panier</Button>
 			</Card.Body>
 		</Card>
 	);

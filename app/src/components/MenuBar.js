@@ -16,7 +16,7 @@ const MenuBar = () => {
 			
 			<div className="menu-elem-wrapper buttons">
 				<Link to="/cart">
-					My Shopping Cart
+					Mon Panier
 				</Link>
 			</div>
 		</div>

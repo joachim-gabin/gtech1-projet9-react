@@ -24,7 +24,7 @@ class ShoppingCart extends React.Component {
 						<thead>
 							<tr>
 								<th>Image</th>
-								<th>Article Name</th>
+								<th>Nom de l'article</th>
 								<th>trux</th>
 							</tr>
 						</thead>
@@ -47,8 +47,8 @@ class ShoppingCart extends React.Component {
 					<div className="d-grid gap-2">
 						{
 							this.props.cart.length == 0
-							? <Button variant="success" className="mb-3" size="lg" disabled>Proceed to payment</Button>
-							: <Button variant="success" className="mb-3" size="lg">Proceed to payment</Button>
+							? <Button variant="success" className="mb-3" size="lg" disabled>Procéder au paiement</Button>
+							: <Button variant="success" className="mb-3" size="lg">Procéder au paiement</Button>
 						}
 					</div>
 				</Container>
