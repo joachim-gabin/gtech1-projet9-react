@@ -32,7 +32,7 @@ class App extends React.Component {
 			<Router>
 				<Routes>
 					<Route exact path='/' element={<Accueil />} />
-					<Route exact path='/cart' element={<ShoppingCart />} />
+					<Route exact path='/cart' element={<ShoppingCart cart={this.state.cart} />} />
 					<Route exact path="/articles" element={<ArticlePage cart={this.state.cart} addArticleToCart={(a) => this.addArticleToCart(a)} />} />
 				</Routes>
 			</Router>

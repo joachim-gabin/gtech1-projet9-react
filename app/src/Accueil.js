@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 
 import logo from './logo.jpg';
 
+
 class Accueil extends React.Component {
 
     render() {
