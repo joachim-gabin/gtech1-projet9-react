@@ -17,7 +17,7 @@ class ShoppingCart extends React.Component {
     render() {
         return (
 			<>
-				<MenuBar />
+				<MenuBar articles={this.props.cart} />
 
 				<Container>
 					<Table striped bordered variant="dark" className="mt-5 mb-3">

@@ -10,10 +10,14 @@ import { Container } from 'react-bootstrap';
 
 class Accueil extends React.Component {
 
+	constructor(props) {
+		super(props);
+	}
+
     render() {
         return (
             <div>
-                <MenuBar />
+                <MenuBar articles={this.props.cart}/>
 
 				<div className="App-header">
 					<div class='App-log-spin'>
@@ -34,7 +38,7 @@ class Accueil extends React.Component {
 						Chaque SCP est désigné par un numéro à trois chiffres ou plus. Le plus connu de tous est sans doute SCP-173 (une statue miniature est disponible dans notre magasin).
 					</p>
 					<p>
-						<a href="http://fondationscp.wikidot.com/" class='lightblue'>En savoir plus</a>						
+						<a href="http://fondationscp.wikidot.com/" class='lightblue' target="blank" rel="nofollow">En savoir plus</a>						
 					</p>
 					<p>
 						Il existe plusieurs jeux autour de la communauté SCP, dont SCP: Containment Breach.

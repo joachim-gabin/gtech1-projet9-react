@@ -38,7 +38,7 @@ class ArticlePage extends React.Component {
 		if (this.state.loading) {
 			return (
 				<>
-					<MenuBar />
+					<MenuBar articles={this.props.cart} />
 
 					<Container className="text-center pt-5 pb-5">
 						<Spinner animation="border" />
@@ -52,7 +52,7 @@ class ArticlePage extends React.Component {
 
         return (
             <>
-                <MenuBar />
+                <MenuBar articles={this.props.cart} />
 
 				<p>
 					{JSON.stringify(this.state.articles, undefined, 4)}
