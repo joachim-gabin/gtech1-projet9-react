@@ -4,6 +4,8 @@ import MenuBar from './components/MenuBar';
 import Footer from './components/Footer';
 
 import logo from './logo.jpg';
+import { Link } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 
 
 class Accueil extends React.Component {
@@ -18,7 +20,9 @@ class Accueil extends React.Component {
 					<h1>THE SCP FOUNDATION</h1>
 				</div>
 
-				<div className="main-content">
+				<Container className="main-content">
+					<Link to="/articles">Accéder à la boutique</Link>
+				
 					<h2>Qu'est-ce que la fondation SCP?</h2>
 					<p>(A compléter, et peut-être mettre sur une autre page)</p>
 					<p>
@@ -29,7 +33,7 @@ class Accueil extends React.Component {
 					<p>
 						Il existe plusieurs jeux autour de la communauté SCP, dont SCP: Containment Breach.
 					</p>
-				</div>
+				</Container>
 
                 <Footer />
             </div>

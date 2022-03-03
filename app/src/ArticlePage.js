@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Col, Container, Row } from 'react-bootstrap'
+import { Col, Container, Row, Spinner } from 'react-bootstrap'
 
 import MenuBar from "./components/MenuBar";
 import Footer from "./components/Footer";
@@ -14,17 +14,42 @@ class ArticlePage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			articles: []
+			articles: [],
+			loading: true
 		}
 	}
 
 	async componentDidMount() {
-		const response = await fetch("http://localhost:1337/api/articles", {method: "GET", headers: {"Accept": "application/json", "Content-Type": "application/json"}});
-		const articles = await response.json();
-		this.setState({articles: articles});
+
+		// Simulation of a delay to test loading screen.
+		setTimeout(async () => {
+
+			const response = await fetch("http://localhost:1337/api/articles", {method: "GET", headers: {"Accept": "application/json", "Content-Type": "application/json"}});
+			const articles = await response.json();
+
+			this.setState({articles: articles, loading: false});
+
+		}, 3000);
 	}
 
     render() {
+
+		// Loading screen.
+		if (this.state.loading) {
+			return (
+				<>
+					<MenuBar />
+
+					<Container className="text-center pt-5 pb-5">
+						<Spinner animation="border" />
+						<p className="ml-5">Chargement des articles...</p>
+					</Container>
+
+					<Footer />
+				</>
+			);
+		}
+
         return (
             <>
                 <MenuBar />
@@ -35,7 +60,7 @@ class ArticlePage extends React.Component {
 				<Container>
 					<Row className="align-items-center">
 						{
-							this.state.articles.data && this.state.articles.data.map((u, id) => {
+							this.state.articles.data.map((u, id) => {
 								return (
 									<Col key={id} className="d-flex justify-content-center" xs={3}>
 										<Article article={u.attributes} addArticleToCart={this.props.addArticleToCart} />
