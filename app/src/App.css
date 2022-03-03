@@ -24,7 +24,7 @@ body
 {
 	position: sticky;
 	top: 0;
-
+	z-index: 5;
 	background: #5e5e5e;
 }
 
@@ -85,4 +85,35 @@ p
 	white-space: pre-wrap;
 	font-family: monospace;
 	font-size: 20px;
+}
+
+.App-log-spin
+{
+  animation-name: spin;
+  animation: spin 6s linear infinite;
+}
+
+
+
+@keyframes spin
+	{
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+
+
+.lightblue
+{
+	color: lightblue;
+}
+
+
+.red
+{
+	color: red;
 }
