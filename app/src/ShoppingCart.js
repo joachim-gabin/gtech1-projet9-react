@@ -15,6 +15,16 @@ class ShoppingCart extends React.Component {
 	}
 
     render() {
+
+		let somme = 0;
+
+		this.props.cart.forEach(element => {
+			somme += element.price;		
+		});
+		
+		
+
+
         return (
 			<>
 				<MenuBar articles={this.props.cart} />
@@ -36,7 +46,8 @@ class ShoppingCart extends React.Component {
 										<tr>
 											<td><img src={logo} alt="A" width="128" /></td>
 											<td>{u.name}</td>
-											<td><Button variant="danger">Delete</Button></td>
+											<td><Button onClick={() => this.props.removeArticleFromCart(i)} variant="danger">Delete</Button></td>
+
 										</tr>
 									);
 								})
@@ -48,7 +59,7 @@ class ShoppingCart extends React.Component {
 						{
 							this.props.cart.length == 0
 							? <Button variant="success" className="mb-3" size="lg" disabled>Procéder au paiement</Button>
-							: <Button variant="success" className="mb-3" size="lg">Procéder au paiement</Button>
+							: <Button variant="success" className="mb-3" size="lg">Procéder au paiement ({somme}€)</Button>
 						}
 					</div>
 				</Container>

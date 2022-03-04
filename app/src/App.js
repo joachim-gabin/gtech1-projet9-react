@@ -27,13 +27,22 @@ class App extends React.Component {
 		}), () => { console.log(this.state.cart); });
 	}
 
+	removeArticleFromCart(pos) {
+
+		let newCart = this.state.cart;
+		newCart.splice(pos, 1);
+
+		this.setState({cart: newCart});
+	}
+
 	render() {
 		return (
 			<Router>
 				<Routes>
 					<Route exact path='/' element={<Accueil cart={this.state.cart} />} />
-					<Route exact path='/cart' element={<ShoppingCart cart={this.state.cart} />} />
+					<Route exact path='/cart' element={<ShoppingCart cart={this.state.cart} removeArticleFromCart={(a) => this.removeArticleFromCart(a)} />} />
 					<Route exact path="/articles" element={<ArticlePage cart={this.state.cart} addArticleToCart={(a) => this.addArticleToCart(a)} />} />
+
 				</Routes>
 			</Router>
 		);

@@ -41,6 +41,7 @@ body
 .menu-bar .buttons
 {
 	float: right;
+	margin-right: 4%;
 }
 
 a

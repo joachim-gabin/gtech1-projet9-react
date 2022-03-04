@@ -24,7 +24,7 @@ class Accueil extends React.Component {
 					<div class='App-log-spin'>
 						<img src={logo} width="300" style={{"borderRadius": "300px"}} />
 					</div>
-					<h1>THE SCP FOUNDATION</h1>
+					<h1 className='text-center'>THE SCP FOUNDATION<br/>SHOP</h1>
 				</div>
 
 				<Container className="main-content" style={{"padding": "60px", "background": "#404040", "marginTop": "100vh", "marginBottom": "100px"}}>
