@@ -3,7 +3,7 @@ import { Button, Card } from 'react-bootstrap';
 
 const Article = (props) => {
 	return (
-		<Card style={{ width: '18rem', background: "#404040", minHeight: "100%" }}>
+		<Card style={{ width: '18rem', background: "#404040", minHeight: "500px", marginBottom: "2rem" }}>
 			<Card.Img variant="top" src={props.article.thumbnail.data == null ? "" : ("http://localhost:1337" + props.article.thumbnail.data.attributes.url)} />
 			<Card.Body>
 				<Card.Title>{props.article.name}</Card.Title>
