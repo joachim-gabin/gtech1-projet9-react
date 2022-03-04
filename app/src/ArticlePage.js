@@ -27,7 +27,7 @@ class ArticlePage extends React.Component {
 		// Simulation of a delay to test loading screen.
 		setTimeout(async () => {
 
-			let response = await fetch("http://localhost:1337/api/articles", {method: "GET", headers: {"Accept": "application/json", "Content-Type": "application/json"}});
+			let response = await fetch("http://localhost:1337/api/articles?populate=*", {method: "GET", headers: {"Accept": "application/json", "Content-Type": "application/json"}});
 			const articles = await response.json();
 
 			response = await fetch("http://localhost:1337/api/categories", {method: "GET", headers: {"Accept": "application/json", "Content-Type": "application/json"}});
@@ -50,7 +50,7 @@ class ArticlePage extends React.Component {
 		return result;
 	}
 
-    render() {
+	render() {
 
 		// Loading screen.
 		if (this.state.loading) {
@@ -70,15 +70,11 @@ class ArticlePage extends React.Component {
 
 		let results = this.filterResults();
 
-        return (
-            <>
-                <MenuBar articles={this.props.cart} />
+		return (
+			<>
+				<MenuBar articles={this.props.cart} />
 
-				<p>
-					{JSON.stringify(this.state.articles, undefined, 4)}
-				</p>
-
-				<div className="py-3" style={{background: "gray"}}>
+				<div className="py-3" style={{background: "gray", position: "sticky", top: "64px", zIndex: "1"}}>
 					<Container>
 						<Form.Control type="text" placeholder="Chercher des articles..." style={{"display": "block"}} onChange={(event) => { this.setState({searchFilter: event.target.value}); }} />
 						<p className="pt-3 mb-0">{
@@ -88,13 +84,13 @@ class ArticlePage extends React.Component {
 				</div>
 
 				<Row>
-					<Col xs={3} className="py-3" style={{background: "rgba(127, 127, 127, 0.3)"}}>
+					<Col xs={3} className="py-3" style={{background: "rgba(127, 127, 127, 0.3)", position: "sticky", top: "192px"}}>
 						<Container>
 						{
 							this.state.categories.data.map((u, id) => {
 								return (
-									<div className="d-grid gap-2 mb-3">
-										<Button className="btn-block">{u.attributes.name}</Button>
+									<div key={id} className="d-grid gap-2 mb-3">
+										<Button>{u.attributes.name}</Button>
 									</div>
 								);
 							})
@@ -105,24 +101,28 @@ class ArticlePage extends React.Component {
 					<Col xs={9} className="py-3">
 						<Container>
 							<Row className="align-items-center">
-								{
-									results.map((u, id) => {
-										return (
-											<Col key={id} className="d-flex justify-content-center" xs={3}>
-												<Article article={u} addArticleToCart={this.props.addArticleToCart} />
-											</Col>
-										);
-									})
-								}
+							{
+								results.map((u, id) => {
+									return (
+										<Col key={id} className="d-flex justify-content-center" xs={3}>
+											<Article article={u} addArticleToCart={this.props.addArticleToCart} />
+										</Col>
+									);
+								})
+							}
 							</Row>
 						</Container>
 					</Col>
 				</Row>
 
+				<p>
+					{JSON.stringify(this.state.articles, undefined, 4)}
+				</p>
+
 				<Footer />
-            </>
-        );
-    }
+			</>
+		);
+	}
 }
 
 export default ArticlePage;

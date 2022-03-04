@@ -25,7 +25,7 @@ class ShoppingCart extends React.Component {
 							<tr>
 								<th>Image</th>
 								<th>Nom de l'article</th>
-								<th>trux</th>
+								<th>Supprimer</th>
 							</tr>
 						</thead>
 
@@ -36,7 +36,7 @@ class ShoppingCart extends React.Component {
 										<tr>
 											<td><img src={logo} alt="A" width="128" /></td>
 											<td>{u.name}</td>
-											<td>trux</td>
+											<td><Button variant="danger">Delete</Button></td>
 										</tr>
 									);
 								})

@@ -11,6 +11,7 @@ body
 {
 	position: sticky;
 	top: 0;
+	height: 64px;
 	z-index: 5;
 	background: #5e5e5e;
 }
@@ -46,11 +47,6 @@ a
 {
 	color: white;
 	text-decoration: none;
-}
-
-.main-content
-{
-	margin: 100px 15%;
 }
 
 footer
@@ -130,4 +126,18 @@ p
 .red
 {
 	color: red;
+}
+
+
+
+.ejump-anim
+{
+	animation: 0.7s ejump;
+}
+
+@keyframes ejump
+{
+	from { height: 50px; animation-timing-function: ease-out; }
+	50% { height: 200px; animation-timing-function: ease-in; }
+	to { height: 50px; }
 }

@@ -4,6 +4,7 @@ import MenuBar from './components/MenuBar';
 import Footer from './components/Footer';
 
 import logo from './logo.jpg';
+import ethan from './img/ethan-173.png'
 import { Link } from 'react-router-dom';
 import { Button, Container } from 'react-bootstrap';
 
@@ -26,8 +27,8 @@ class Accueil extends React.Component {
 					<h1>THE SCP FOUNDATION</h1>
 				</div>
 
-				<Container className="main-content" style={{"padding": "60px", "background": "#404040", "margin-top": "100vh"}}>
-					<div className="text-center">
+				<Container className="main-content" style={{"padding": "60px", "background": "#404040", "marginTop": "100vh", "marginBottom": "100px"}}>
+					<div className="text-center mb-5">
 						<Link to="/articles">
 							<Button size="lg">Accéder à la boutique</Button>
 						</Link>
@@ -48,6 +49,21 @@ class Accueil extends React.Component {
 						Il existe plusieurs jeux autour de la communauté SCP, dont SCP: Containment Breach.
 					</p>
 				</Container>
+
+
+
+				<div style={{position: "relative", top: "0", left: "0", width: "100%", height: "100%"}} onClick={() =>
+				{
+					let ethan = document.getElementById("ethan-wrapper");
+					let c = ethan.cloneNode(true);
+					ethan.parentNode.replaceChild(c, ethan);
+					c.classList.add("ejump-anim");
+				}}>
+
+					<div id="ethan-wrapper" style={{position: "absolute", bottom: "-64px", right: "100px", width: "auto", height: "50px", overflow: "hidden"}}>
+						<img src={ethan} />
+					</div>
+				</div>
 
                 <Footer />
             </div>
