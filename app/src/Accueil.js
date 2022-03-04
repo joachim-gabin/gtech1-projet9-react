@@ -4,6 +4,7 @@ import MenuBar from './components/MenuBar';
 import Footer from './components/Footer';
 
 import logo from './logo.jpg';
+import logo2 from './img/logo_scp_blanc.png'
 import ethan from './img/ethan-173.png'
 import { Link } from 'react-router-dom';
 import { Button, Container } from 'react-bootstrap';
@@ -23,6 +24,9 @@ class Accueil extends React.Component {
 				<div className="App-header">
 					<div class='App-log-spin'>
 						<img src={logo} width="300" style={{"borderRadius": "300px"}} />
+					</div>
+					<div class='App-log-spin-reverse'>
+						<img src={logo2} width="1500" style={{"borderRadius": "1500px"}} />
 					</div>
 					<h1 className='text-center'>THE SCP FOUNDATION<br/>SHOP</h1>
 				</div>

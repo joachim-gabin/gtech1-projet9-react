@@ -100,13 +100,22 @@ p
 
 .App-header h1
 {
-	margin-top: 60px;
+	transform: translateY(240px);
+	z-index: 1;
 }
 
 .App-log-spin
 {
+	position: absolute;
 	animation-name: spin;
-	animation: spin 6s linear infinite;
+	animation: spin 10s linear infinite;
+}
+
+.App-log-spin-reverse
+{
+	position: absolute;
+	animation-name: spin;
+	animation: spin 10s linear infinite reverse;
 }
 
 

@@ -84,7 +84,7 @@ class ArticlePage extends React.Component {
 				</div>
 
 				<Row>
-					<Col xs={3} className="py-3" style={{background: "rgba(127, 127, 127, 0.3)", position: "sticky", top: "192px"}}>
+					<Col xs={0} md={3} className="py-3" style={{background: "rgba(127, 127, 127, 0.3)", position: "sticky", top: "192px"}}>
 						<Container>
 						{
 							this.state.categories.data.map((u, id) => {
@@ -98,13 +98,13 @@ class ArticlePage extends React.Component {
 						</Container>
 					</Col>
 
-					<Col xs={9} className="py-3">
+					<Col xs={12} md={9} className="py-3">
 						<Container>
 							<Row className="align-items-center">
 							{
 								results.map((u, id) => {
 									return (
-										<Col key={id} className="d-flex justify-content-center" xs={3}>
+										<Col key={id} className="d-flex justify-content-center" xs={6} lg={4} xl={3}>
 											<Article article={u} addArticleToCart={this.props.addArticleToCart} />
 										</Col>
 									);
