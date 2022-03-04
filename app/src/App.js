@@ -21,14 +21,22 @@ class App extends React.Component {
 		};
 	}
 
+	componentDidMount() {
+		if (localStorage.getItem("cart"))
+			this.setState({ cart: JSON.parse(localStorage.getItem("cart")) });
+
+		window.onbeforeunload = () => {
+			localStorage.setItem("cart", JSON.stringify(this.state.cart));
+		};
+	}
+
 	addArticleToCart(article) {
 		this.setState((prevState) => ({
 			cart: [...prevState.cart, article]
-		}), () => { console.log(this.state.cart); });
+		}));
 	}
 
 	removeArticleFromCart(pos) {
-
 		let newCart = this.state.cart;
 		newCart.splice(pos, 1);
 

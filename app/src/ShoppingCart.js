@@ -21,9 +21,6 @@ class ShoppingCart extends React.Component {
 		this.props.cart.forEach(element => {
 			somme += element.price;		
 		});
-		
-		
-
 
         return (
 			<>

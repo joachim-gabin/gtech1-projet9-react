@@ -15,10 +15,10 @@ class Accueil extends React.Component {
 		super(props);
 	}
 
-    render() {
-        return (
-            <div>
-                <MenuBar articles={this.props.cart}/>
+	render() {
+		return (
+			<>
+				<MenuBar articles={this.props.cart}/>
 
 				<div className="App-header">
 					<div class='App-log-spin'>
@@ -53,22 +53,23 @@ class Accueil extends React.Component {
 
 
 				<div style={{position: "relative", top: "0", left: "0", width: "100%", height: "100%"}} onClick={() =>
-				{
-					let ethan = document.getElementById("ethan-wrapper");
-					let c = ethan.cloneNode(true);
-					ethan.parentNode.replaceChild(c, ethan);
-					c.classList.add("ejump-anim");
-				}}>
+					{
+						let ethan = document.getElementById("ethan-wrapper");
+						let c = ethan.cloneNode(true);
+						ethan.parentNode.replaceChild(c, ethan);
+						c.classList.add("ejump-anim");
+					}}
+				>
 
 					<div id="ethan-wrapper" style={{position: "absolute", bottom: "-64px", right: "100px", width: "auto", height: "50px", overflow: "hidden"}}>
 						<img src={ethan} />
 					</div>
 				</div>
 
-                <Footer />
-            </div>
-        );
-    }
+				<Footer />
+			</>
+		);
+	}
 }
 
 export default Accueil;
