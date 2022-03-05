@@ -84,8 +84,8 @@ class ArticlePage extends React.Component {
 				</div>
 
 				<Row>
-					<Col xs={0} md={3} className="py-3" style={{background: "rgba(127, 127, 127, 0.3)", position: "sticky", top: "192px"}}>
-						<Container>
+					<Col xs={0} md={3} className="py-3" style={{background: "rgba(127, 127, 127, 0.3)"}}>
+						<Container style={{ position: "sticky", top: "200px" }}>
 						{
 							this.state.categories.data.map((u, id) => {
 								return (
@@ -115,11 +115,9 @@ class ArticlePage extends React.Component {
 					</Col>
 				</Row>
 
-				<p>
+				<p style={{"fontSize": "14px"}}>
 					{JSON.stringify(this.state.articles, undefined, 4)}
 				</p>
-
-				<Footer />
 			</>
 		);
 	}
