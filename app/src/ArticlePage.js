@@ -42,7 +42,7 @@ class ArticlePage extends React.Component {
 
 		let result = [];
 		this.state.articles.data.map((u, id) => {
-			if (u.attributes.name.startsWith(this.state.searchFilter)) {
+			if (u.attributes.name.toLowerCase().includes(this.state.searchFilter)) {
 				result.push(u.attributes);
 			}
 		});
@@ -78,7 +78,7 @@ class ArticlePage extends React.Component {
 					<Container>
 						<Form.Control type="text" placeholder="Chercher des articles..." style={{"display": "block"}} onChange={(event) => { this.setState({searchFilter: event.target.value}); }} />
 						<p className="pt-3 mb-0">{
-							(results.length == 0 ? "No" : results.length) + (results.length == 1 ? " résultat." : " résultats.")
+							(results.length == 0 ? "Pas de" : results.length) + (results.length == 1 ? " résultat." : " résultats.")
 						}</p>
 					</Container>
 				</div>
