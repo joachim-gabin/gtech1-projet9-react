@@ -20,7 +20,7 @@ class ShoppingCart extends React.Component {
 		let somme = 0;
 
 		this.props.cart.forEach(element => {
-			somme += element.price;		
+			somme += element.attributes.price;		
 		});
 
         return (
@@ -45,7 +45,7 @@ class ShoppingCart extends React.Component {
 									return (
 										<tr>
 											<td><img src={logo} alt="A" width="128" /></td>
-											<td>{u.name}</td>
+											<td>{u.attributes.name}</td>
 											<td><Button onClick={() => this.props.removeArticleFromCart(i)} variant="danger">Delete</Button></td>
 
 										</tr>
