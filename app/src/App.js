@@ -14,6 +14,7 @@ import ArticlePage from './ArticlePage';
 import React from 'react';
 import Helmet from 'react-helmet';
 import Order from './Order';
+import Description from './Description';
 
 
 
@@ -61,6 +62,8 @@ class App extends React.Component {
 						<Route exact path='/' element={<Accueil cart={this.state.cart} />} />
 						<Route exact path='/cart' element={<ShoppingCart cart={this.state.cart} removeArticleFromCart={(a) => this.removeArticleFromCart(a)} />} />
 						<Route exact path="/articles" element={<ArticlePage cart={this.state.cart} addArticleToCart={(a) => this.addArticleToCart(a)} />} />
+						<Route exact path='/description' element={<Description />} />
+
 
 						<Route exact path="/order" element={<Order cart={this.state.cart} />} />
 					</Routes>

@@ -115,7 +115,7 @@ class ArticlePage extends React.Component {
 								this.state.shownArticles.map((u, id) => {
 									return (
 										<Col key={id} className="d-flex justify-content-center" xs={6} lg={4} xl={3}>
-											<Article article={u.attributes} addArticleToCart={this.props.addArticleToCart} />
+											<Article article={u} addArticleToCart={this.props.addArticleToCart} />
 										</Col>
 									);
 								})
