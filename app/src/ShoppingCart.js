@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import { Button, Container, Table } from "react-bootstrap";
 
 import logo from "./logo.jpg"
+import { Link } from "react-router-dom";
 
 
 
@@ -27,6 +28,8 @@ class ShoppingCart extends React.Component {
 				<MenuBar articles={this.props.cart} />
 
 				<Container>
+
+					{ /* List of articles in the cart. */ }
 					<Table striped bordered variant="dark" className="mt-5 mb-3">
 						<thead>
 							<tr>
@@ -52,13 +55,12 @@ class ShoppingCart extends React.Component {
 						</tbody>
 					</Table>
 
-					<div className="d-grid gap-2">
-						{
-							this.props.cart.length == 0
-							? <Button variant="success" className="mb-3" size="lg" disabled>Procéder au paiement</Button>
-							: <Button variant="success" className="mb-3" size="lg">Procéder au paiement ({somme}€)</Button>
-						}
-					</div>
+					{ /* Proceed to payment button. */ }
+					{
+						this.props.cart.length == 0
+						? <div className="d-grid gap-2"><Button variant="success" className="mb-3" size="lg" disabled>Procéder au paiement</Button></div>
+						: <Link to="/order" className="d-grid gap-2"><Button variant="success" className="mb-3" size="lg">Procéder au paiement ({somme}€)</Button></Link>
+					}
 				</Container>
 				
 				<Footer />

@@ -23,7 +23,7 @@ class Accueil extends React.Component {
 
 				<div className="App-header">
 					<div class='App-log-spin'>
-						<img src={logo} width="300" style={{"borderRadius": "300px"}} />
+						<img src={logo2} width="300" style={{"borderRadius": "300px"}} />
 					</div>
 					<div class='App-log-spin-reverse'>
 						<img src={logo2} width="1500" style={{"borderRadius": "1500px"}} />

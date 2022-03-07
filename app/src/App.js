@@ -13,6 +13,7 @@ import ArticlePage from './ArticlePage';
 
 import React from 'react';
 import Helmet from 'react-helmet';
+import Order from './Order';
 
 
 
@@ -43,7 +44,7 @@ class App extends React.Component {
 	removeArticleFromCart(pos) {
 		let newCart = this.state.cart;
 		newCart.splice(pos, 1);
-
+		
 		this.setState({cart: newCart});
 	}
 
@@ -61,6 +62,7 @@ class App extends React.Component {
 						<Route exact path='/cart' element={<ShoppingCart cart={this.state.cart} removeArticleFromCart={(a) => this.removeArticleFromCart(a)} />} />
 						<Route exact path="/articles" element={<ArticlePage cart={this.state.cart} addArticleToCart={(a) => this.addArticleToCart(a)} />} />
 
+						<Route exact path="/order" element={<Order cart={this.state.cart} />} />
 					</Routes>
 				</Router>
 			</>
