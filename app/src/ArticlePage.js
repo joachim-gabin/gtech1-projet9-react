@@ -16,8 +16,10 @@ class ArticlePage extends React.Component {
 		super(props);
 		this.state = {
 			articles: [],
+			shownArticles: [],
 			categories: [],
 			searchFilter: "",
+			catFilter: "",
 			loading: true
 		}
 	}
@@ -27,27 +29,34 @@ class ArticlePage extends React.Component {
 		// Simulation of a delay to test loading screen.
 		setTimeout(async () => {
 
-			let response = await fetch("http://localhost:1337/api/articles?populate=*", {method: "GET", headers: {"Accept": "application/json", "Content-Type": "application/json"}});
-			const articles = await response.json();
-
-			response = await fetch("http://localhost:1337/api/categories", {method: "GET", headers: {"Accept": "application/json", "Content-Type": "application/json"}});
+			// Load categories.
+			let response = await fetch("http://localhost:1337/api/categories", {method: "GET", headers: {"Accept": "application/json", "Content-Type": "application/json"}});
 			const categories = await response.json();
 
-			this.setState({articles: articles, categories: categories, loading: false});
+			// Load articles.
+			await this.updateArticles("", "");
+
+			this.setState({ categories: categories, loading: false });
 
 		}, 500);
 	}
 
-	filterResults() {
+	async updateArticles(searchFilter, catFilter) {
 
-		let result = [];
-		this.state.articles.data.map((u, id) => {
-			if (u.attributes.name.toLowerCase().includes(this.state.searchFilter)) {
-				result.push(u.attributes);
+		let url = "http://localhost:1337/api/articles?populate=*";
+		if (catFilter != "")
+			url += "&filters[categories][name][$eq]=" + catFilter;
+		let response = await fetch(url, {method: "GET", headers: {"Accept": "application/json", "Content-Type": "application/json"}});
+		const articles = await response.json();
+
+		let shownArticles = [];
+		articles.data.map((u, id) => {
+			if (u.attributes.name.toLowerCase().includes(searchFilter)) {
+				shownArticles.push(u);
 			}
 		});
 
-		return result;
+		this.setState({ articles: articles, shownArticles: shownArticles });
 	}
 
 	render() {
@@ -68,17 +77,18 @@ class ArticlePage extends React.Component {
 			);
 		}
 
-		let results = this.filterResults();
+		//let results = await this.filterResults();
 
 		return (
 			<>
 				<MenuBar articles={this.props.cart} />
 
+				{ /* Search bar with number of results displayed. */ }
 				<div className="py-3" style={{background: "gray", position: "sticky", top: "64px", zIndex: "1"}}>
 					<Container>
-						<Form.Control type="text" placeholder="Chercher des articles..." style={{"display": "block"}} onChange={(event) => { this.setState({searchFilter: event.target.value}); }} />
+						<Form.Control type="text" placeholder="Chercher des articles..." style={{"display": "block"}} onChange={(event) => { this.updateArticles(event.target.value, this.state.catFilter); }} />
 						<p className="pt-3 mb-0">{
-							(results.length == 0 ? "Pas de" : results.length) + (results.length == 1 ? " résultat." : " résultats.")
+							(this.state.shownArticles.length == 0 ? "Pas de" : this.state.shownArticles.length) + (this.state.shownArticles.length == 1 ? " résultat." : " résultats.")
 						}</p>
 					</Container>
 				</div>
@@ -90,7 +100,7 @@ class ArticlePage extends React.Component {
 							this.state.categories.data.map((u, id) => {
 								return (
 									<div key={id} className="d-grid gap-2 mb-3">
-										<Button>{u.attributes.name}</Button>
+										<Button onClick={() => this.updateArticles(this.state.searchFilter, u.attributes.name)}>{u.attributes.name}</Button>
 									</div>
 								);
 							})
@@ -102,10 +112,10 @@ class ArticlePage extends React.Component {
 						<Container>
 							<Row className="align-items-center">
 							{
-								results.map((u, id) => {
+								this.state.shownArticles.map((u, id) => {
 									return (
 										<Col key={id} className="d-flex justify-content-center" xs={6} lg={4} xl={3}>
-											<Article article={u} addArticleToCart={this.props.addArticleToCart} />
+											<Article article={u.attributes} addArticleToCart={this.props.addArticleToCart} />
 										</Col>
 									);
 								})
