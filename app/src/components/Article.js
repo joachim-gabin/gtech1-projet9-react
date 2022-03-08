@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 
 const Article = (props) => {
 
@@ -15,7 +17,9 @@ const Article = (props) => {
 				<Card.Text>
 				
 					{article.price}€
+
 				</Card.Text>
+				<Link to={"/description?id=" + id}><Button>Description {id}</Button></Link>				
 				<Button className="mt-auto" onClick={() => props.addArticleToCart(props.article)} variant="primary">Ajouter au panier</Button>
 			</Card.Body>
 		</Card>
