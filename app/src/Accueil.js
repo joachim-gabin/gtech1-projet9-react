@@ -65,7 +65,7 @@ class Accueil extends React.Component {
 					}}
 				>
 
-					<div id="ethan-wrapper" style={{position: "absolute", bottom: "-64px", right: "100px", width: "auto", height: "50px", overflow: "hidden"}}>
+					<div id="ethan-wrapper" style={{position: "absolute", bottom: "-64px", right: "100px", width: "auto", height: "50px", overflow: "hidden", "zIndex": 5}}>
 						<img src={ethan} />
 					</div>
 				</div>

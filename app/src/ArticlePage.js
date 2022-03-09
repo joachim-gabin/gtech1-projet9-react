@@ -125,9 +125,7 @@ class ArticlePage extends React.Component {
 					</Col>
 				</Row>
 
-				<p style={{"fontSize": "14px"}}>
-					{JSON.stringify(this.state.articles, undefined, 4)}
-				</p>
+				<Footer />
 			</>
 		);
 	}

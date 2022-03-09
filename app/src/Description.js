@@ -43,8 +43,6 @@ class Description extends React.Component {
         return(
 			<>
 				<MenuBar articles={this.props.cart} />   
-
-				<p>{JSON.stringify(this.state.article)}</p>
 				
 				<Container border="light" className="main-content" style={{"padding": "60px", "background": "#404040", "marginTop": "100px", "marginBottom": "140px"}}>
 					<div class="underline">
