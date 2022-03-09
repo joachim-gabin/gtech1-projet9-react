@@ -39,8 +39,7 @@ class Description extends React.Component {
                 </>
             );
         }
-
-
+		
         return(
 			<>
 				<MenuBar articles={this.props.cart} />   
@@ -62,7 +61,7 @@ class Description extends React.Component {
 						</Link>
 					</div>
 				</Container>
-				
+
 				<Footer />
 			</>
         );

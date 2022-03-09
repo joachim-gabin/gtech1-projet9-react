@@ -67,11 +67,11 @@ class Order extends React.Component {
 						{
 							this.props.cart.map((u, id) => {
 
-								total += u.attributes.price;
+								total += u.article.attributes.price;
 								return (
 									<>
 										<p>
-											1 x {u.attributes.name}
+											{u.count} x {u.article.attributes.name}
 										</p>
 										<hr />
 									</>

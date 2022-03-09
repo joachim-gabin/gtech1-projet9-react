@@ -37,9 +37,24 @@ class App extends React.Component {
 	}
 
 	addArticleToCart(article) {
-		this.setState((prevState) => ({
-			cart: [...prevState.cart, article]
-		}));
+
+		let cart = [...this.state.cart];
+
+		// Check if article is already present.
+		for (let i = 0; i < cart.length; ++i) {
+			if (cart[i].article.id == article.id) {
+
+				// Increment article count, and we're done.
+				cart[i].count++;
+				return;
+			}
+		}
+
+		// Else, add the article with initial count = 1.
+		cart.push({ article: article, count: 1 });
+
+		// Update the cart.
+		this.setState({ cart: cart });
 	}
 
 	removeArticleFromCart(pos) {
