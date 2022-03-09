@@ -6,6 +6,12 @@ import logo_shop from  "../img/logo-shop.png"
 import { Container } from "react-bootstrap";
 
 const MenuBar = (props) => {
+
+	let numArticles = 0;
+	for (let i = 0; i < props.articles.length; ++i) {
+		numArticles += props.articles[i].count;
+	}
+
 	return (
 		<div className="menu-bar">
 			<div className="title-box">
@@ -18,7 +24,7 @@ const MenuBar = (props) => {
 			<div className="buttons">
 				<div className="title-box">
 				<Link to="/cart">
-					<img src={logo_shop} /> {props.articles.length > 0 && ('(' + props.articles.length + ')')}
+					<img src={logo_shop} /> {numArticles > 0 && ('(' + numArticles + ')')}
 				</Link>
 				</div>
 			</div>			
