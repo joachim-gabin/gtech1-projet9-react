@@ -160,3 +160,47 @@ p
 	50% { height: 200px; animation-timing-function: ease-in; }
 	to { height: 50px; }
 }
+
+
+.anim-alarm {
+	position: relative;
+	font-family: Geneva, sans-serif;
+	font-size: 30px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	/*background: linear-gradient(90deg, #ff0033, #fff, #000);*/
+	background-repeat: no-repeat;
+	background-size: 80%;
+	animation: animate 2s linear infinite;
+	-webkit-background-clip: text;
+
+}
+
+@keyframes animate
+{
+	0%
+	{
+		color: rgba(0, 0, 0, 0);
+	}
+	25%
+	{
+		color: rgb(255, 0, 0);
+	}
+	50%
+	{
+		color: rgb(255, 255, 255);
+		text-shadow: rgb(255, 0, 0) 0 0 10px;
+	}
+	75%
+	{
+		color: rgb(255, 0, 0);
+	}
+	100%
+	{
+		color: rgba(0, 0, 0, 0);
+	}
+}
+
+.underline{
+	text-decoration: underline;
+}

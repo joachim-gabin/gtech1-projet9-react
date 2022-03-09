@@ -47,15 +47,16 @@ class Description extends React.Component {
 
 				<p>{JSON.stringify(this.state.article)}</p>
 				
-				<Container className="main-content" style={{"padding": "60px", "background": "#404040", "marginTop": "100px", "marginBottom": "140px"}}>
-					<div>
+				<Container border="light" className="main-content" style={{"padding": "60px", "background": "#404040", "marginTop": "100px", "marginBottom": "140px"}}>
+					<div class="underline">
 						<h1 class="text-center">{this.state.article.name}</h1>                
 					</div>
 
 					<div className="text-center mb-5">
-
-						{this.state.article.thumbnail.data == null ? <p class="red-light">/!\ IMAGE CONFIDENTIELLE /!\</p> : <img src={("http://localhost:1337" + this.state.article.thumbnail.data.attributes.url)}></img>}
-						<p>{this.state.article.description}</p>
+                        <div style={{"marginTop": "75px", "marginBottom": "75px"}}>
+						    {this.state.article.thumbnail.data == null ? <p class="anim-alarm red-light">/!\ IMAGE CONFIDENTIELLE /!\</p> : <img src={("http://localhost:1337" + this.state.article.thumbnail.data.attributes.url)}></img>}
+						</div>
+                        <p>{this.state.article.description}</p>
 						<Link to="/articles">
 							<Button size="lg">Retourner a la boutique</Button>
 						</Link>
