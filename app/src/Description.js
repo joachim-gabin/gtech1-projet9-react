@@ -54,11 +54,12 @@ class Description extends React.Component {
 						    {this.state.article.attributes.thumbnail.data == null ? <p class="anim-alarm red-light">/!\ IMAGE CONFIDENTIELLE /!\</p> : <img src={("http://localhost:1337" + this.state.article.attributes.thumbnail.data.attributes.url)}></img>}
 						</div>
                         <p>{this.state.article.attributes.description}</p>
-
-                        <Button onClick={() => this.props.addArticleToCart(this.state.article)} variant="primary">Ajouter au panier</Button>						
-                        <Link to="/articles">
-							<Button size="lg">Retourner a la boutique</Button>
-						</Link>
+                        <div className='bouton_description'>
+                            <Button size="lg" onClick={() => this.props.addArticleToCart(this.state.article)} variant="primary">Ajouter au panier</Button>						
+                            <Link to="/articles">
+                                <Button size="lg" style={{marginLeft: "20px"}}>Retourner a la boutique</Button>
+                            </Link>
+                        </div>
 					</div>
 				</Container>
 
