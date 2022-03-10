@@ -44,7 +44,7 @@ class ShoppingCart extends React.Component {
 							{
 								this.props.cart.map((u, i) => {
 									return (
-										<tr>
+										<tr key={i}>
 											<td><img src={logo} alt="A" width="128" /></td>
 											<td>{u.article.attributes.name}</td>
 											<td>{u.count}</td>

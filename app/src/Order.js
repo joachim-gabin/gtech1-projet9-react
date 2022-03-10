@@ -70,7 +70,7 @@ class Order extends React.Component {
 								total += u.article.attributes.price;
 								return (
 									<>
-										<p>
+										<p key={id}>
 											{u.count} x {u.article.attributes.name}
 										</p>
 										<hr />

@@ -18,7 +18,7 @@ const MenuBar = (props) => {
 				<img src={logo_scp_blanc} />
 				<div className="menu-elem-wrapper">
 					<Link to="/" className="title">Menu Principal </Link>
-					<Link to="/articles" className="title" style={{"margin-left" : "25px"}}>SHOP</Link>
+					<Link to="/articles" className="title" style={{"marginLeft" : "25px"}}>SHOP</Link>
 				</div>
 			</div>					
 			<div className="buttons">
