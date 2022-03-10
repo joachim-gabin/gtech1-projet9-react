@@ -4,7 +4,7 @@ import MenuBar from "./components/MenuBar";
 import Footer from "./components/Footer";
 import { Button, Container, Table } from "react-bootstrap";
 
-import logo from "./logo.jpg"
+import logo from "./img/Redacted.webp"
 import { Link } from "react-router-dom";
 
 
@@ -45,7 +45,7 @@ class ShoppingCart extends React.Component {
 								this.props.cart.map((u, i) => {
 									return (
 										<tr key={i}>
-											<td><img src={logo} alt="A" width="128" /></td>
+											<td><img src={u.article.attributes.thumbnail.data ? ("http://localhost:1337" + u.article.attributes.thumbnail.data.attributes.url) : logo} alt="A" width="128" /></td>
 											<td>{u.article.attributes.name}</td>
 											<td>{u.count}</td>
 											<td><Button onClick={() => this.props.removeArticleFromCart(i)} variant="danger">Delete</Button></td>
